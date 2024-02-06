@@ -12,35 +12,51 @@ package exercise1;
  */
 public class Card {
 
-   private String suit; //clubs, spades, diamonds, hearts
-   private int value;//1-13
+  public static final String[] SUITS = {"Hearts", "Diamonds", "Spades", "Clubs"};
 
-   public static final String [] SUITS = {"Hearts", "Diamonds", "Spades", "Clubs"};
-    /**
-     * @return the suit
-     */
-    public String getSuit() {
-        return suit;
+  private String suit;
+  private int value;
+
+  public Card(String suit, int value) {
+    this.suit = suit; 
+    this.value = value;
+  }
+
+  public String getSuit() {  
+    return suit;
+  }
+
+  public int getValue() {
+    return value;
+  }
+
+  public void setSuit(String suit) {
+    this.suit = suit;
+  }
+
+  public void setValue(int value) {
+    this.value = value;
+  }
+
+  public boolean equals(Card other) {
+    return this.getSuit().equals(other.getSuit()) &&
+           this.getValue() == other.getValue();
+  }
+
+  public void printCard() {
+    String valueString = "";
+    if (value == 11) {
+      valueString = "J";
+    } else if (value == 12) {
+      valueString = "Q";
+    } else if (value == 13) {
+      valueString = "K"; 
+    } else if (value == 14) {
+      valueString = "A";
+    } else {
+      valueString = String.valueOf(value);
     }
+    System.out.println(valueString + " of " + suit); 
+  }
 
-    /**
-     * @param suit the suit to set
-     */
-    public void setSuit(String suit) {
-        this.suit = suit;
-    }
-
-    /**
-     * @return the value
-     */
-    public int getValue() {
-        return value;
-    }
-
-    /**
-     * @param value the value to set
-     */
-    public void setValue(int value) {
-        this.value = value;
-    }  
 }
